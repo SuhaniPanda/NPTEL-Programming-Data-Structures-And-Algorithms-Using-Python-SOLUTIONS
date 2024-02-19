@@ -18,10 +18,10 @@ Winner:Loser:Set-1-score,...,Set-k-score, where 2 ≤ k ≤ 5
 
 For example, an input line of the form
 
-Halep:Wozniacki:3-6,6-3,6-3
-indicates that Halep beat Wozniacki 3-6, 6-3, 6-3 in a best of 3 set match.
+Jabeur:Swiatek:3-6,6-3,6-3
+indicates that Jabeur beat Swiatek 3-6, 6-3, 6-3 in a best of 3 set match.
 
-The input is terminated by a blank line.
+The input is terminated by a line consisting of the string "EOF".
 
 You have to write a Python program that reads information about all the matches and compile the following statistics for each player:
 
@@ -35,21 +35,25 @@ You should print out to the screen (standard output) a summary in decreasing ord
 
 For instance, given the following data
 
-Federer:Nadal:2-6,6-7,7-6,6-3,6-1
-Nadal:Federer:6-3,4-6,6-4,6-3
-Federer:Nadal:6-0,7-6,6-7,6-3
-Nadal:Federer:6-4,6-4
-Federer:Nadal:2-6,6-2,6-0
-Nadal:Federer:6-3,4-6,6-3,6-4
-Federer:Nadal:7-6,4-6,7-6,2-6,6-2
-Nadal:Federer:7-5,7-5
-Halep:Wozniacki:3-6,6-3,6-3
+Zverev:Alcaraz:2-6,6-7,7-6,6-3,6-1
+Swiatek:Jabeur:6-4,6-4
+Alcaraz:Zverev:6-3,6-3
+Jabeur:Swiatek:1-6,7-5,6-2
+Zverev:Alcaraz:6-0,7-6,6-3
+Jabeur:Swiatek:2-6,6-2,6-0
+Alcaraz:Zverev:6-3,4-6,6-3,6-4
+Swiatek:Jabeur:6-1,3-6,7-5
+Zverev:Alcaraz:7-6,4-6,7-6,2-6,6-2
+Jabeur:Swiatek:6-4,1-6,6-3
+Alcaraz:Zverev:7-5,7-5
+Jabeur:Swiatek:3-6,6-3,6-3
+EOF
 your program should print out the following
 
-Federer 3 1 13 142 16 143
-Nadal 2 2 16 143 13 142
-Halep 0 1 2 15 1 12
-Wozniacki 0 0 1 12 2 15
+Zverev 3 0 10 104 11 106
+Alcaraz 1 2 11 106 10 104
+Jabeur 0 4 9 76 8 74
+Swiatek 0 2 8 74 9 76
 You can assume that there are no spaces around the punctuation marks ":", "-" and ",". Each player's name will be spelled consistently and no two players have the same name.
 """
 # Statistics will be stored as a dictionary
@@ -65,7 +69,7 @@ stats = {}
 
 # Read a line of input
 line = input()
-while line:
+while line != 'EOF':    #The code doesn't run if (!='EOF' is not mentioned)
   # Keep track of sets/games won and lost in this match
   # with respect to winner of the match
   (wsets,lsets,wgames,lgames) = (0,0,0,0)
